@@ -16,13 +16,13 @@ function intro() {
 }
 
 function getName(err, result, isDefault) {
-	name = result;
+  name = result;
 	
-	if (result === "exit") {
-	  console.log("Bye bye!");
-	  process.exit();
-	}
+  if (result === "exit") {
+    console.log("Bye bye!");
+	process.exit();
+  }
 
-	intro();
-	return name;
+  intro();
+  return name;
 }
