@@ -13,39 +13,42 @@ of the fixed iteration inner loop otherwise.
 
 var read = require('read');
 var names = [];
-var answer = "";
 
+loop();
 
-console.log("Would you like to loop? Type yes or exit.");
-read({prompt: '>'}, loop);
+function loop () {
+  console.log("Would you like to loop? Type 'yes' or 'exit'.")
+  read({prompt: '>'}, intro);
+  return;
+}
 
-
-function loop(result) {
-  answer = result;
-
+function intro(err, answer, isDefault) {
   if (answer === "exit") {
+    console.log("Bye bye!");
     process.exit();
-  } else {
 
-    function intro() {
-
-      console.log("What's your name?");
-      read({prompt: '>'}, getName);
-      return;
-    }
-
-      function getName(err, result, isDefault) {
-        names.push(result);
-
-        if (names.length === 4) {
-          console.log(names);
-          process.exit();
-        } else {
-          loop();
-          return names;
-        }  
-      }
+  } if (answer === "yes") {
+    getName();
+    return;
   }
-   
+}
+
+function getName(err, result, isDefault) {
+  names.push(result);
+
+  if (names.length === 4) {
+    console.log(names);
+    process.exit();
+
+  } else {
+    console.log("What's your name?");
+    read({prompt: '>'}, getName);
+    return names;
+  }
+    loop();
+}
 
 
+
+
+ 
