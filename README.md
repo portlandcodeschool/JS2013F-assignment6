@@ -2,8 +2,8 @@
 
 If you haven't already, you need to clone this repo and create a new working branch for yourself.
 
-1. git clone git@github.com:portlandcodeschool/JS2013F-assignment5.git
-2. cd JS2013F-assignment5
+1. git clone git@github.com:portlandcodeschool/JS2013F-assignment6.git
+2. cd JS2013F-assignment6
 3. git checkout -b &lt;your lastname&gt;
 4. git mkdir &lt;your lastname&gt;
 5. git cd &lt;your lastname&gt;
