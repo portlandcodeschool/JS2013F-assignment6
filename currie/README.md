@@ -1,4 +1,6 @@
 Repo for assignment 6.
 
-'twothingsatonce.js' and 'daloop.js' is the same code and satifies both requirements for the first two assignments.
+'twothingsatonce.js' and 'daloop.js' utiliize the same code and satify both requirements for the first two assignments.
+
+
 
