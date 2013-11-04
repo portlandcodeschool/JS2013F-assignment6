@@ -20,9 +20,10 @@ Newcontact.prototype.toString = function () {
 read({prompt: "What's your name?"}, getName);
 
 function getName (err, result, isDefault) {
-  if (result === "exit") {
-    console.log("Thats all folks")
-    process.exit()
+  if ((result === "exit") || (counter == 3 )) {
+    console.log(storage);
+    console.log("Thats all folks");
+    process.exit();
   } else {
 
   console.log("Your name is: " + result);
@@ -41,13 +42,13 @@ function getPhone (err, result, isDefault) {
   console.log("Your phone is: " + result);
   phone = result;
   var user = new Newcontact(name, address, phone);
+  counter++
   storeAndPrint(user);
 }
 
 function storeAndPrint (user) {
   console.log(user.toString());
-  // storage.push(user);
-  // console.log(storage);
+  storage.push(user);
   read({prompt: "What's your name?"}, getName);
 }
 
