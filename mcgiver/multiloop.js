@@ -17,23 +17,20 @@ Newcontact.prototype.toString = function () {
     return test;
 };
 
-read({prompt: "Do you want to get on this ferris wheel?"}, getLoop);
-
   function getLoop (err, result, silent) {
-    if (result === "exit") {
+    if ((result === "exit") || (result === "no")){
       console.log(storage);
       console.log("Thats all folks");
       process.exit();
     } else {
+      counter = 0 
       read({prompt: "What's your name?"}, getName);
+    }
   }
-
-read({prompt: "What's your name?"}, getName);
 
   function getName (err, result, silent) {
     if (counter == 2 ) {
-      child.exit();
-      read({prompt: "Do you want to get back on this ferris wheel?"}, getLoop);
+      read({prompt: "Do you want to get on this ferris wheel?"}, getLoop);
     } else {
       console.log("Your name is: " + result);
       name = result;
@@ -57,6 +54,7 @@ read({prompt: "What's your name?"}, getName);
     read({prompt: "What's your name?"}, getName);
   }
 
-}
+read({prompt: "Do you want to get on this ferris wheel?"}, getLoop);
+
 
            
