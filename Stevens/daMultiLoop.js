@@ -17,36 +17,39 @@ var names = [];
 loop();
 
 function loop () {
-  console.log("Would you like to loop? Type 'yes' or 'exit'.")
+  console.log(names);
+  console.log("Would you like to loop? Type 'yes' or 'exit'.");
   read({prompt: '>'}, intro);
   return;
 }
 
-function intro(err, answer, isDefault) {
+function intro(err, answer) {
   if (answer === "exit") {
     console.log("Bye bye!");
     process.exit();
 
   } if (answer === "yes") {
-    getName();
+    addName();
     return;
   }
 }
 
-function getName(err, result, isDefault) {
-  names.push(result);
+function addName () {
+  console.log("What's your name?");
+  read ({prompt: '>'}, getName);
 
-  if (names.length === 4) {
-    console.log(names);
-    process.exit();
+  function getName(err, result) {
+    names.push(result);
 
-  } else {
-    console.log("What's your name?");
-    read({prompt: '>'}, getName);
-    return names;
+    if (names.length % 5 === 0) {
+      loop();
+
+    } else {
+      addName();
+      return names;
+    }
   }
-    loop();
-}
+} 
 
 
 
