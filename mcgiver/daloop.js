@@ -17,40 +17,46 @@ Newcontact.prototype.toString = function () {
     return test;
 };
 
-read({prompt: "What's your name?"}, getName);
+read({prompt: "Do you want to get on this ferris wheel?"}, getLoop);
 
-function getName (err, result, isDefault) {
-  if ((result === "exit") || (counter == 3 )) {
+  function getLoop (err, result, isDefault) {
+  if (result === "exit") {
     console.log(storage);
     console.log("Thats all folks");
     process.exit();
   } else {
 
-  console.log("Your name is: " + result);
-  name = result;
-  read({prompt: "What's your address?"}, getAddress);
-  }
 }
 
-function getAddress (err, result, isDefault) {
-  console.log("Your address is: " + result);
-  address = result;
-  read({prompt: "What's your phone number?"}, getPhone);
-}
-
-function getPhone (err, result, isDefault) {
-  console.log("Your phone is: " + result);
-  phone = result;
-  var user = new Newcontact(name, address, phone);
-  counter++
-  storeAndPrint(user);
-}
-
-function storeAndPrint (user) {
-  console.log(user.toString());
-  storage.push(user);
   read({prompt: "What's your name?"}, getName);
-}
 
+  function getName (err, result, isDefault) {
+    if (counter == 2 ) {
+      read({prompt: "Do you want to get back on this ferris wheel?"}, getLoop);
+    } else {
+
+    console.log("Your name is: " + result);
+    name = result;
+    read({prompt: "What's your address?"}, getAddress);
+    }
+  }
+
+  function getAddress (err, result, isDefault) {
+    console.log("Your address is: " + result);
+    address = result;
+    read({prompt: "What's your phone number?"}, getPhone);
+  }
+
+  function getPhone (err, result, isDefault) {
+    console.log("Your phone is: " + result);
+    phone = result;
+    var user = new Newcontact(name, address, phone);
+    counter++
+    console.log(user.toString());
+    storage.push(user);
+    read({prompt: "What's your name?"}, getName);
+  }
+
+}
 
            
