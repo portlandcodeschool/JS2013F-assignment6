@@ -33,14 +33,14 @@ function timeLoopInit (err, result) {
 
 	if (result === 'exit') {
 		process.exit();
-	}
-
-	if (result === 'start'){
+	} else if (result === 'start'){
 		read({prompt: 'The timer has started. Press \'enter\' for a split time.\n> '}, printTime);
 			secondCounter = 0,
 			i = 0,
 			counterArray = [];
-	}
+	} else {
+		read({prompt: 'Would you like to start a 10 split timer?\nType "start" to start or "exit" to exit.\n>'}, timeLoopInit);
+	};
 
 };
 
