@@ -3,7 +3,7 @@ var read = require("read");
 var name = "";
 var address = "";
 var phone = "";
-var storage = [];
+var myBook = [];
 var counter = 0
 
 function Newcontact(name, address, phone) {
@@ -19,7 +19,7 @@ Newcontact.prototype.toString = function () {
 
   function getLoop (err, result, silent) {
     if ((result === "exit") || (result === "no")){
-      console.log(storage);
+      console.log(myBook);
       console.log("Thats all folks");
       process.exit();
     } else {
@@ -50,7 +50,7 @@ Newcontact.prototype.toString = function () {
     var user = new Newcontact(name, address, phone);
     counter++
     console.log(user.toString());
-    storage.push(user);
+    myBook.push(user);
     read({prompt: "What's your name?"}, getName);
   }
 
